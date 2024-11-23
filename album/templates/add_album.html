@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+<title>{{type2}} Album Page</title>
+{% endblock %}
+
+{% block body %}
+<section>
+    <div class="container">
+        {% if type != 'Delete' %}
+        <h4 class="text-center border border-primary bg-light text-primary rounded py-2 px-3 w-50 mx-auto"> 
+            {{type2}} Album 
+        </h4>        
+        {% else %}
+        <h4 class="text-center" >Are you sure? You want to delete.</h4>
+        {% endif %}
+        <form method="POST" style="width: 50%; margin:auto" novalidate>
+            {% csrf_token %}
+            {% if type != 'Delete' %}
+                {{ form | crispy }}
+            {% endif %}
+            <input type="submit" value="{{type}}" class="btn btn-primary px-4 py-2 rounded">
+        </form>
+    </div>
+</section>
+{% endblock %}

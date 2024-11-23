@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+<title>User Login Page</title>
+{% endblock %}
+
+{% block body %}
+<section>
+    <div class="container">
+        <h4 class="text-center border border-primary bg-light text-primary rounded py-2 px-3 w-50 mx-auto"> 
+            User Login Page 
+        </h4>        
+        <form method="POST" style="width: 50%; margin:auto" novalidate>
+            {% csrf_token %}
+            {{ form | crispy }}
+            <input type="submit" value="Submit" class="btn btn-primary px-4 py-2 rounded">
+        </form>
+    </div>
+</section>
+{% endblock %}
